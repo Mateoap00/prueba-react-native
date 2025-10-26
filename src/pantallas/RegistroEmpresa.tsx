@@ -48,9 +48,6 @@ export default function RegistroEmpresa() {
   });
 
   const enviarFormulario = async (datos: FormularioCrearEmpresa) => {
-    console.log('🚀 Iniciando creación de empresa...');
-    console.log('📋 Datos del formulario:', datos);
-
     setCargando(true);
     try {
       const empresaCreada = await EmpresaServicio.crearEmpresa(datos);
@@ -251,6 +248,21 @@ export default function RegistroEmpresa() {
                 </Text>
               )}
             </TouchableOpacity>
+
+            {/* Link a Login */}
+            <View className="mt-6">
+              <Text className="text-gray-600 text-center mb-2">
+                ¿Ya tienes una cuenta?
+              </Text>
+              <TouchableOpacity
+                onPress={() => navigation.navigate('Login')}
+                disabled={cargando}
+              >
+                <Text className="text-blue-600 text-center font-semibold">
+                  Iniciar Sesión
+                </Text>
+              </TouchableOpacity>
+            </View>
           </View>
         </View>
       </ScrollView>
